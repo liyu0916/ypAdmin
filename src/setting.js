@@ -33,6 +33,12 @@ export default {
   theme: {
     list: [
       {
+        title:'国网绿',
+        name: 'green',
+        backgroundImage: 'image/theme/green/loginbg.png',
+        preview: 'image/theme/star/preview@2x.png'
+      },
+      {
         title: 'd2admin 经典',
         name: 'd2',
         preview: 'image/theme/d2/preview@2x.png'
