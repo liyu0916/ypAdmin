@@ -36,6 +36,16 @@ export default {
         { path: '/demo/plugins/vxe-table/rowedit', title: 'rowedit' },
         { path: '/demo/plugins/vxe-table/tree', title: 'tree' }
       ]
+    },
+    {
+      path: '/demo/plugins/chart',
+      title: 'chart',
+      icon: 'line-chart',
+      children: [
+        { path: '/demo/plugins/chart/echartZxt', title: '折线图' },
+        { path: '/demo/plugins/chart/echartBt', title: '饼图' },
+        { path: '/demo/plugins/chart/echartZzt', title: '柱状图' },
+      ]
     }
   ]
 }

@@ -36,7 +36,7 @@ export default {
         title:'国网绿',
         name: 'green',
         backgroundImage: 'image/theme/green/loginbg.png',
-        preview: 'image/theme/star/preview@2x.png'
+        preview: 'image/theme/green/gwl.png'
       },
       {
         title: 'd2admin 经典',
