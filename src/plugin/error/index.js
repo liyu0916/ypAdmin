@@ -15,6 +15,7 @@ export default {
               vm
             }
           })
+          console.log(process.env.NODE_ENV)
           if (process.env.NODE_ENV !== 'development') return
           util.log.capsule('D2Admin', 'ErrorHandler', logType)
           util.log.danger('>>>>>> 错误信息 >>>>>>')

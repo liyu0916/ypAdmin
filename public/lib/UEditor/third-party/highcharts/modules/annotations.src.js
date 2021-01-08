@@ -96,7 +96,7 @@ var Annotation = function () {
 	this.init.apply(this, arguments);
 };
 Annotation.prototype = {
-	/* 
+	/*
 	 * Initialize the annotation
 	 */
 	init: function (chart, options) {
@@ -332,11 +332,11 @@ Annotation.prototype = {
 };
 
 
-// Add annotations methods to chart prototype
+// Add annotations methods to v-charts prototype
 extend(Chart.prototype, {
 	annotations: {
 		/*
-		 * Unified method for adding annotations to the chart
+		 * Unified method for adding annotations to the v-charts
 		 */
 		add: function (options, redraw) {
 			var annotations = this.allItems,
@@ -358,7 +358,7 @@ extend(Chart.prototype, {
 		},
 
 		/**
-		 * Redraw all annotations, method used in chart events
+		 * Redraw all annotations, method used in v-charts events
 		 */
 		redraw: function () {
 			each(this.allItems, function (annotation) {
@@ -369,7 +369,7 @@ extend(Chart.prototype, {
 });
 
 
-// Initialize on chart load
+// Initialize on v-charts load
 Chart.prototype.callbacks.push(function (chart) {
 	var options = chart.options.annotations,
 		group;
@@ -383,17 +383,17 @@ Chart.prototype.callbacks.push(function (chart) {
 	// initialize empty array for annotations
 	chart.annotations.allItems = [];
 
-	// link chart object to annotations
+	// link v-charts object to annotations
 	chart.annotations.chart = chart;
 
-	// link annotations group element to the chart
+	// link annotations group element to the v-charts
 	chart.annotations.group = group;
 
 	if (isArray(options) && options.length > 0) {
 		chart.annotations.add(chart.options.annotations);
 	}
 
-	// update annotations after chart redraw
+	// update annotations after v-charts redraw
 	Highcharts.addEvent(chart, 'redraw', function () {
 		chart.annotations.redraw();
 	});

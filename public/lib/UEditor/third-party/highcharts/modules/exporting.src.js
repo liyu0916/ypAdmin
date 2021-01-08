@@ -42,7 +42,7 @@ var Chart = Highcharts.Chart,
 
 	// Add language
 	extend(defaultOptions.lang, {
-		printChart: 'Print chart',
+		printChart: 'Print v-charts',
 		downloadPNG: 'Download PNG image',
 		downloadJPEG: 'Download JPEG image',
 		downloadPDF: 'Download PDF document',
@@ -77,7 +77,7 @@ defaultOptions.navigation = {
 		symbolX: 12.5,
 		symbolY: 10.5,
 		align: 'right',
-		buttonSpacing: 3, 
+		buttonSpacing: 3,
 		height: 22,
 		// text: null,
 		theme: {
@@ -94,7 +94,7 @@ defaultOptions.navigation = {
 // Add the export related options
 defaultOptions.exporting = {
 	//enabled: true,
-	//filename: 'chart',
+	//filename: 'v-charts',
 	type: 'image/png',
 	url: 'http://export.highcharts.com/',
 	//width: undefined,
@@ -161,7 +161,7 @@ defaultOptions.exporting = {
 Highcharts.post = function (url, data) {
 	var name,
 		form;
-	
+
 	// create the form
 	form = createElement('form', {
 		method: 'post',
@@ -190,9 +190,9 @@ Highcharts.post = function (url, data) {
 extend(Chart.prototype, {
 
 	/**
-	 * Return an SVG representation of the chart
+	 * Return an SVG representation of the v-charts
 	 *
-	 * @param additionalOptions {Object} Additional chart options for the generated SVG representation
+	 * @param additionalOptions {Object} Additional v-charts options for the generated SVG representation
 	 */
 	getSVG: function (additionalOptions) {
 		var chart = this,
@@ -215,14 +215,14 @@ extend(Chart.prototype, {
 			/*jslint unparam: false*/
 		}
 
-		// create a sandbox where a new chart will be generated
+		// create a sandbox where a new v-charts will be generated
 		sandbox = createElement(DIV, null, {
 			position: ABSOLUTE,
 			top: '-9999em',
 			width: chart.chartWidth + PX,
 			height: chart.chartHeight + PX
 		}, doc.body);
-		
+
 		// get the source size
 		cssWidth = chart.renderTo.style.width;
 		cssHeight = chart.renderTo.style.height;
@@ -244,8 +244,8 @@ extend(Chart.prototype, {
 			height: sourceHeight
 		});
 		options.exporting.enabled = false; // hide buttons in print
-		
-		// prepare for replicating the chart
+
+		// prepare for replicating the v-charts
 		options.series = [];
 		each(chart.series, function (serie) {
 			seriesOptions = merge(serie.options, {
@@ -259,7 +259,7 @@ extend(Chart.prototype, {
 			}
 		});
 
-		// generate the chart copy
+		// generate the v-charts copy
 		chartCopy = new Highcharts.Chart(options, chart.callback);
 
 		// reflect axis extremes in the export
@@ -325,19 +325,19 @@ extend(Chart.prototype, {
 	},
 
 	/**
-	 * Submit the SVG representation of the chart to the server
+	 * Submit the SVG representation of the v-charts to the server
 	 * @param {Object} options Exporting options. Possible members are url, type and width.
-	 * @param {Object} chartOptions Additional chart options for the SVG representation of the chart
+	 * @param {Object} chartOptions Additional v-charts options for the SVG representation of the v-charts
 	 */
 	exportChart: function (options, chartOptions) {
 		options = options || {};
-		
+
 		var chart = this,
 			chartExportingOptions = chart.options.exporting,
 			svg = chart.getSVG(merge(
 				{ chart: { borderRadius: 0 } },
 				chartExportingOptions.chartOptions,
-				chartOptions, 
+				chartOptions,
 				{
 					exporting: {
 						sourceWidth: options.sourceWidth || chartExportingOptions.sourceWidth,
@@ -348,7 +348,7 @@ extend(Chart.prototype, {
 
 		// merge the options
 		options = merge(chart.options.exporting, options);
-		
+
 		// do the post
 		Highcharts.post(options.url, {
 			filename: options.filename || 'chart',
@@ -359,9 +359,9 @@ extend(Chart.prototype, {
 		});
 
 	},
-	
+
 	/**
-	 * Print the chart
+	 * Print the v-charts
 	 */
 	print: function () {
 
@@ -386,7 +386,7 @@ extend(Chart.prototype, {
 			}
 		});
 
-		// pull out the chart
+		// pull out the v-charts
 		body.appendChild(container);
 
 		// print
@@ -396,7 +396,7 @@ extend(Chart.prototype, {
 		// allow the browser to prepare before reverting
 		setTimeout(function () {
 
-			// put the chart back in
+			// put the v-charts back in
 			origParent.appendChild(container);
 
 			// restore all body content
@@ -483,7 +483,7 @@ extend(Chart.prototype, {
 			// create the items
 			each(items, function (item) {
 				if (item) {
-					var element = item.separator ? 
+					var element = item.separator ?
 						createElement('hr', null, null, innerMenu) :
 						createElement(DIV, {
 							onmouseover: function () {
@@ -534,7 +534,7 @@ extend(Chart.prototype, {
 	},
 
 	/**
-	 * Add the export button to the chart
+	 * Add the export button to the v-charts
 	 */
 	addButton: function (options) {
 		var chart = this,
@@ -580,11 +580,11 @@ extend(Chart.prototype, {
 		} else if (menuItems) {
 			callback = function () {
 				chart.contextMenu(
-					button.menuClassName, 
-					menuItems, 
-					button.translateX, 
-					button.translateY, 
-					button.width, 
+					button.menuClassName,
+					menuItems,
+					button.translateX,
+					button.translateY,
+					button.width,
 					button.height,
 					button
 				);
@@ -595,7 +595,7 @@ extend(Chart.prototype, {
 
 		if (btnOptions.text && btnOptions.symbol) {
 			attr.paddingLeft = Highcharts.pick(attr.paddingLeft, 25);
-		
+
 		} else if (!btnOptions.text) {
 			extend(attr, {
 				width: btnOptions.width,
@@ -616,7 +616,7 @@ extend(Chart.prototype, {
 					btnOptions.symbol,
 					btnOptions.symbolX - (symbolSize / 2),
 					btnOptions.symbolY - (symbolSize / 2),
-					symbolSize,				
+					symbolSize,
 					symbolSize
 				)
 				.attr(extend(symbolAttr, {
@@ -648,7 +648,7 @@ extend(Chart.prototype, {
 		// Destroy the extra buttons added
 		for (i = 0; i < chart.exportSVGElements.length; i++) {
 			elem = chart.exportSVGElements[i];
-			
+
 			// Destroy and null the svg/vml elements
 			if (elem) { // #1822
 				elem.onclick = elem.ontouchstart = null;
@@ -685,7 +685,7 @@ symbols.menu = function (x, y, width, height) {
 	return arr;
 };
 
-// Add the buttons on chart load
+// Add the buttons on v-charts load
 Chart.prototype.callbacks.push(function (chart) {
 	var n,
 		exportingOptions = chart.options.exporting,
@@ -699,7 +699,7 @@ Chart.prototype.callbacks.push(function (chart) {
 			chart.addButton(buttons[n]);
 		}
 
-		// Destroy the export elements at chart destroy
+		// Destroy the export elements at v-charts destroy
 		addEvent(chart, 'destroy', chart.destroyExport);
 	}
 

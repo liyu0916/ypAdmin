@@ -44,7 +44,7 @@ export default {
       children: [
         { path: '/demo/playground/frame/d2-doc', title: 'D2Admin 中文文档', iconSvg: 'd2-admin' },
         { path: '/demo/playground/frame/html', title: '静态 HTML', icon: 'code' },
-        { path: '/demo/playground/frame/report', title: '构建分析', icon: 'pie-chart' }
+        { path: '/demo/playground/frame/report', title: '构建分析', icon: 'pie-v-charts' }
       ]
     },
     {

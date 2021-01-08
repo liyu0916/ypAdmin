@@ -25,8 +25,12 @@ export default {
     { path: 'vxe-table/chart', name: 'demo-plugins-vxe-table-chart', component: _import('demo/plugins/vxe-table/chart'), meta: { ...meta, title: 'chart' } },
     { path: 'vxe-table/rowedit', name: 'demo-plugins-vxe-table-rowedit', component: _import('demo/plugins/vxe-table/rowedit'), meta: { ...meta, title: 'rowedit' } },
     { path: 'vxe-table/tree', name: 'demo-plugins-vxe-table-tree', component: _import('demo/plugins/vxe-table/tree'), meta: { ...meta, title: 'tree' } },
-    { path: 'chart/echartZxt', name: 'demo-plugins-chart-echartZxt', component: _import('demo/plugins/chart/echartZxt'), meta: { ...meta, title: '折线图' } },
-    { path: 'chart/echartBt', name: 'demo-plugins-chart-echartBt', component: _import('demo/plugins/chart/echartBt'), meta: { ...meta, title: '饼图' } },
-    { path: 'chart/echartZzt', name: 'demo-plugins-chart-echartZzt', component: _import('demo/plugins/chart/echartZzt'), meta: { ...meta, title: '柱状图' } },
-  ]
+    { path: 'v-charts/vchartZxt', name: 'demo-plugins-v-charts-vchartZxt', component: _import('demo/plugins/v-charts/vchartZxt'), meta: { ...meta, title: 'v-charts折线图' } },
+    { path: 'v-charts/vchartBt', name: 'demo-plugins-v-charts-vchartBt', component: _import('demo/plugins/v-charts/vchartBt'), meta: { ...meta, title: 'v-charts饼图' } },
+    { path: 'v-charts/vchartZzt', name: 'demo-plugins-v-charts-vchartZzt', component: _import('demo/plugins/v-charts/vchartZzt'), meta: { ...meta, title: 'v-charts柱状图' } },
+    { path: 'v-charts/vchartLdt', name: 'demo-plugins-v-charts-vchartLdt', component: _import('demo/plugins/v-charts/vchartLdt'), meta: { ...meta, title: 'v-charts漏斗图' } },
+    { path: 'echarts/echartsZxt', name: 'demo-plugins-echarts-echartsZxt', component: _import('demo/plugins/echarts/echartsZxt'), meta: { ...meta, title: 'echarts折线图' } },
+    { path: 'echarts/echartsZzt', name: 'demo-plugins-echarts-echartsZzt', component: _import('demo/plugins/echarts/echartsZzt'), meta: { ...meta, title: 'echarts柱状图' } },
+    { path: 'echarts/echartsBt', name: 'demo-plugins-echarts-echartsBt', component: _import('demo/plugins/echarts/echartsBt'), meta: { ...meta, title: 'echarts饼图' } }
+    ]
 }

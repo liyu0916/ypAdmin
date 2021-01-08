@@ -539,7 +539,7 @@ UE.parse.register('table', function (utils) {
 });
 UE.parse.register('charts',function( utils ){
 
-    utils.cssRule('chartsContainerHeight','.edui-chart-container { height:'+(this.chartContainerHeight||300)+'px}');
+    utils.cssRule('chartsContainerHeight','.edui-v-charts-container { height:'+(this.chartContainerHeight||300)+'px}');
     var resourceRoot = this.rootPath,
         containers = this.root,
         sources = null;
@@ -576,7 +576,7 @@ UE.parse.register('charts',function( utils ){
 
         for ( var i = 0, tableNode; tableNode = tables[ i ]; i++ ) {
 
-            if ( tableNode.getAttribute( "data-chart" ) !== null ) {
+            if ( tableNode.getAttribute( "data-v-charts" ) !== null ) {
 
                 data.push( formatData( tableNode ) );
 
@@ -590,7 +590,7 @@ UE.parse.register('charts',function( utils ){
 
     function formatData ( tableNode ) {
 
-        var meta = tableNode.getAttribute( "data-chart" ),
+        var meta = tableNode.getAttribute( "data-v-charts" ),
             metaConfig = {},
             data = [];
 
@@ -687,7 +687,7 @@ UE.parse.register('charts',function( utils ){
     function loadTypeConfig () {
 
         utils.loadFile(document,{
-            src : resourceRoot + "/dialogs/charts/chart.config.js",
+            src : resourceRoot + "/dialogs/charts/v-charts.config.js",
             tag : "script",
             type : "text/javascript",
             defer : "defer"
@@ -785,7 +785,7 @@ UE.parse.register('charts',function( utils ){
     function createContainer ( tableNode ) {
 
         var container = document.createElement( "div" );
-        container.className = "edui-chart-container";
+        container.className = "edui-v-charts-container";
 
         tableNode.parentNode.replaceChild( container, tableNode );
 

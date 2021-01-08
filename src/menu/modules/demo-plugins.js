@@ -38,14 +38,26 @@ export default {
       ]
     },
     {
-      path: '/demo/plugins/chart',
-      title: 'chart',
-      icon: 'line-chart',
+      path: '/demo/plugins/v-charts',
+      title: 'v-charts',
+      icon: 'pie-chart',
       children: [
-        { path: '/demo/plugins/chart/echartZxt', title: '折线图' },
-        { path: '/demo/plugins/chart/echartBt', title: '饼图' },
-        { path: '/demo/plugins/chart/echartZzt', title: '柱状图' },
+        { path: '/demo/plugins/v-charts/vchartZxt', title: 'v-charts折线图' },
+        { path: '/demo/plugins/v-charts/vchartBt', title: 'v-charts饼图' },
+        { path: '/demo/plugins/v-charts/vchartZzt', title: 'v-charts柱状图' },
+        { path: '/demo/plugins/v-charts/vchartLdt', title: 'v-charts漏斗图' },
+      ]
+    },
+    {
+      path: '/demo/plugins/echarts',
+      title: 'echarts',
+      icon: 'area-chart',
+      children: [
+        { path: '/demo/plugins/echarts/echartsZxt', title: 'echarts折线图' },
+        { path: '/demo/plugins/echarts/echartsBt', title: 'echarts饼图' },
+        { path: '/demo/plugins/echarts/echartsZzt', title: 'echarts柱状图' },
       ]
     }
+
   ]
 }

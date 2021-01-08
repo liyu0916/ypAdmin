@@ -57,7 +57,8 @@ export default {
       }, err => {
         console.log(err)
         this.$message({
-          message: '错误信息已经打印到控制台',
+          message: '' +
+          '错误信息已经打印到控制台',
           type: 'error'
         })
       })

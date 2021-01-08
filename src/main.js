@@ -12,8 +12,12 @@ import router from './router'
 import { menuHeader, menuAside } from '@/menu'
 import { frameInRoutes } from '@/router/routes'
 
+// import $ from 'jquery'
+import  echarts from 'echarts'
+import VCharts from 'v-charts'
 import XEUtils from 'xe-utils'
 import '@/plugin/vxe-table'
+
 
 XEUtils.setup({
   formatDate: 'yyyy-MM-dd HH:mm:ss', // 默认的 toStringDate 参数
@@ -24,9 +28,14 @@ XEUtils.setup({
   }
 })
 Vue.prototype.$XEUtils = XEUtils
+Vue.prototype.$echarts = echarts
+
 
 // 核心插件
+
 Vue.use(d2Admin)
+Vue.use(VCharts)
+
 
 
 new Vue({

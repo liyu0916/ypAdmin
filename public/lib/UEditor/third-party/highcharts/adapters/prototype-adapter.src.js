@@ -83,17 +83,17 @@ return {
 					}
 
 					if (element.attr) { // SVGElement
-						
+
 						if (element.element) { // If not, it has been destroyed (#1405)
 							element.attr(this.options.attribute, position);
 						}
-					
+
 					} else { // HTML, #409
 						obj = {};
 						obj[this.options.attribute] = position;
 						$(element).setStyle(obj);
 					}
-					
+
 				},
 				finish: function () {
 					// Delete the property that holds this animation now that it is finished.
@@ -105,18 +105,18 @@ return {
 			});
 		}
 	},
-	
+
 	/**
 	 * Run a general method on the framework, following jQuery syntax
 	 * @param {Object} el The HTML element
 	 * @param {String} method Which method to run on the wrapped element
 	 */
 	adapterRun: function (el, method) {
-		
+
 		// This currently works for getting inner width and height. If adding
 		// more methods later, we need a conditional implementation for each.
 		return parseInt($(el).getStyle(method), 10);
-		
+
 	},
 
 	/**
@@ -205,7 +205,7 @@ return {
 	each: function (arr, fn) {
 		$A(arr).each(fn);
 	},
-	
+
 	inArray: function (item, arr, from) {
 		return arr ? arr.indexOf(item, from) : -1;
 	},
@@ -213,7 +213,7 @@ return {
 	/**
 	 * Get the cumulative offset relative to the top left of the page. This method, unlike its
 	 * jQuery and MooTools counterpart, still suffers from issue #208 regarding the position
-	 * of a chart within a fixed container.
+	 * of a v-charts within a fixed container.
 	 */
 	offset: function (el) {
 		return $(el).cumulativeOffset();
@@ -251,7 +251,7 @@ return {
 			el._highcharts_stop_observing(event, handler);
 		}
 	},
-	
+
 	washMouseEvent: function (e) {
 		return e;
 	},

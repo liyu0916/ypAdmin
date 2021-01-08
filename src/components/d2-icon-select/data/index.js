@@ -12,7 +12,7 @@ export default [
       'american-sign-language-interpreting',
       'anchor',
       'archive',
-      'area-chart',
+      'area-v-charts',
       'arrows',
       'arrows-h',
       'arrows-v',
@@ -25,8 +25,8 @@ export default [
       'balance-scale',
       'ban',
       'bank',
-      'bar-chart',
-      'bar-chart-o',
+      'bar-v-charts',
+      'bar-v-charts-o',
       'barcode',
       'bars',
       'bath',
@@ -245,7 +245,7 @@ export default [
       'life-ring',
       'life-saver',
       'lightbulb-o',
-      'line-chart',
+      'line-v-charts',
       'location-arrow',
       'lock',
       'low-vision',
@@ -292,7 +292,7 @@ export default [
       'phone-square',
       'photo',
       'picture-o',
-      'pie-chart',
+      'pie-v-charts',
       'plane',
       'plug',
       'plus',
@@ -614,11 +614,11 @@ export default [
   {
     title: '图表',
     icon: [
-      'area-chart',
-      'bar-chart',
-      'bar-chart-o',
-      'line-chart',
-      'pie-chart'
+      'area-v-charts',
+      'bar-v-charts',
+      'bar-v-charts-o',
+      'line-v-charts',
+      'pie-v-charts'
     ]
   },
   {

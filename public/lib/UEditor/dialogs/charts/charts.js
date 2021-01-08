@@ -24,7 +24,7 @@ window.onload = function () {
     initChartsTypeView();
     renderTable( editorTable );
     initEvent();
-    initUserConfig( editorTable.getAttribute( "data-chart" ) );
+    initUserConfig( editorTable.getAttribute( "data-v-charts" ) );
     $( "#scrollBed .view-box:eq("+ currentChartType +")" ).trigger( "click" );
     updateViewType( currentChartType );
 
@@ -52,7 +52,7 @@ function initChartsTypeView () {
 
     for ( var i = 0, len = chartsConfig.length; i<len; i++ ) {
 
-        contents.push( '<div class="view-box" data-chart-type="'+ i +'"><img width="300" src="images/charts'+ i +'.png"></div>' );
+        contents.push( '<div class="view-box" data-v-charts-type="'+ i +'"><img width="300" src="images/charts'+ i +'.png"></div>' );
 
     }
 
@@ -174,7 +174,7 @@ function initEvent () {
     //图表类型变化
     $( '#scrollBed' ).delegate( ".view-box", "click", function (e) {
 
-        var index = $( this ).attr( "data-chart-type" );
+        var index = $( this ).attr( "data-v-charts-type" );
         $chartsTypeViewBox.removeClass( "selected" );
         $( $chartsTypeViewBox[ index ] ).addClass( "selected" );
 
