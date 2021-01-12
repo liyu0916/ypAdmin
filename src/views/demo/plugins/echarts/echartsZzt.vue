@@ -3,6 +3,18 @@
     <el-row :gutter="20" class="d2-mt">
       <el-col :span="12">
         <el-card>
+          <div ref="chart5" style="height: 300px;"></div>
+        </el-card>
+      </el-col>
+      <el-col :span="12">
+        <el-card>
+          <div style="height: 300px" ref="chart6"></div>
+        </el-card>
+      </el-col>
+    </el-row>
+    <el-row :gutter="20" class="d2-mt">
+      <el-col :span="12">
+        <el-card>
           <div ref="chart1" style="height: 300px;"></div>
         </el-card>
       </el-col>
@@ -21,18 +33,6 @@
       <el-col :span="12">
         <el-card>
           <div style="height: 300px" ref="chart4"></div>
-        </el-card>
-      </el-col>
-    </el-row>
-    <el-row :gutter="20" class="d2-mt">
-      <el-col :span="12">
-        <el-card>
-          <div ref="chart5" style="height: 300px;"></div>
-        </el-card>
-      </el-col>
-      <el-col :span="12">
-        <el-card>
-          <div style="height: 300px" ref="chart6"></div>
         </el-card>
       </el-col>
     </el-row>
@@ -68,10 +68,250 @@
               console.log("v-charts 为空")
             }
           },
-          drawZzt2(){
+          drawZzt2() {
             let chart2 = this.$refs.chart2;
             if(chart2){
-              let myChart = this.$echarts.init(chart2)
+              let myChart = this.$echarts.init(chart2);
+              //柱状堆叠图
+              let option =  {
+                grid:{
+                  top:50,
+                  bottom:46,
+                  left:45,
+                  right:5
+                },
+                tooltip:{
+                  show:true,
+                  trigger:"axis",
+                  textStyle:{
+                    color:"#00cce2"
+                  },
+                  axisPointer:{
+                    type:"shadow"
+                  },
+                },
+                legend: {
+                  show:true,
+                  icon:"circle",
+                  textStyle:{
+                    color:"#00cce2",
+                    //fontSize:10,
+                  },
+                  data:['危急','严重','一般'],
+                  right:20,
+                  width:250
+                },
+                xAxis: {
+                  type: 'category',
+                  data:['杆塔','基础','导地线','金具','通道环境','接地电阻','原因不明'],
+                  axisLine:{
+                    show:true,
+                    lineStyle: {
+                      color: "#00cce2"
+                    },
+                  },
+                  axisTick:{
+                    show:false
+                  },
+                  axisLabel:{
+                    show:true,
+                    rotate:50,
+                    fontSize:10,
+                    interval:0
+                  },
+                  splitLine:{
+                    show:false
+                  },
+                },
+                yAxis: {
+                  type: 'value',
+                  axisLine: {
+                    show: false,
+                    lineStyle: {
+                      color: "#00cce2"
+                    }
+                  },
+                  axisTick: {
+                    show: false
+                  },
+                  axisLabel: {
+                    show: true
+                  },
+                  splitLine: {
+                    show:true,
+                    lineStyle:{
+                      color:"rgba(59,123,123,.3)"
+                    }
+                  }
+                },
+                series : [
+                  {
+                    name:'危急',
+                    type:'bar',
+                    barWidth:15,
+                    stack:"缺陷统计",
+                    itemStyle:{
+                      barBorderRadius:3,
+                      borderColor:"rgba(2,65,64,.8)",
+                      borderWidth:1,
+                      color:{
+                        type: 'linear',
+                        x: 0, x2: 1, y: 0, y2: 0,
+                        colorStops: [{
+                          offset: 0,
+                          color: 'rgba(242,73,77)'
+                        }, {
+                          offset: 0.5,
+                          color: 'rgba(242,73,77)'
+                        }, {
+                          offset: 0.5,
+                          color:'rgba(199,34,38)'
+                        }, {
+                          offset: 1,
+                          color:'rgba(199,34,38)'
+                        }]
+                      },
+                    },
+                    data:[4,0,0,0,1,0,0]
+                  },
+                  {
+                    name:'严重',
+                    type:'bar',
+                    barWidth:15,
+                    stack:"缺陷统计",
+                    itemStyle:{
+                      barBorderRadius:3,
+                      borderColor:"rgba(2,65,64,.8)",
+                      borderWidth:1,
+                      color:{
+                        type: 'linear',
+                        x: 0, x2: 1, y: 0, y2: 0,
+                        colorStops: [{
+                          offset: 0,
+                          color: 'rgba(255,135,28)'
+                        }, {
+                          offset: 0.5,
+                          color: 'rgba(255,135,28)'
+                        }, {
+                          offset: 0.5,
+                          color: 'rgba(223,108,31)'
+                        }, {
+                          offset: 1,
+                          color: 'rgba(223,108,31)'
+                        }]
+                      },
+                    },
+                    data:[2,0,0,0,3,0,0]
+                  },
+                  {
+                    name:'一般',
+                    type:'bar',
+                    barWidth:15,
+                    stack:"缺陷统计",
+                    itemStyle:{
+                      barBorderRadius:3,
+                      borderColor:"rgba(2,65,64,.8)",
+                      borderWidth:1,
+                      color:{
+                        type: 'linear',
+                        x: 0, x2: 1, y: 0, y2: 0,
+                        colorStops: [{
+                          offset: 0,
+                          color: 'rgba(244,235,33)'
+                        }, {
+                          offset: 0.5,
+                          color: 'rgba(244,235,33)'
+                        }, {
+                          offset: 0.5,
+                          color: 'rgba(207,200,44)'
+                        }, {
+                          offset: 1,
+                          color: 'rgba(207,200,44)'
+                        }]
+                      },
+                    },
+                    data:[0,0,0,0,0,1,1]
+                  }
+                ]
+              }
+              myChart.setOption(option)
+            }
+
+          },
+          drawZzt3(){
+            let chart3 = this.$refs.chart3;
+            if(chart3){
+              let myChart = this.$echarts.init(chart3)
+              let option = {
+                tooltip: {
+                  trigger: 'axis',
+                  axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                  }
+                },
+                legend: {
+                  data: ['利润', '支出', '收入']
+                },
+                grid: {
+                  left: '3%',
+                  right: '4%',
+                  bottom: '3%',
+                  containLabel: true
+                },
+                xAxis: [
+                  {
+                    type: 'value'
+                  }
+                ],
+                yAxis: [
+                  {
+                    type: 'category',
+                    axisTick: {
+                      show: false
+                    },
+                    data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+                  }
+                ],
+                series: [
+                  {
+                    name: '利润',
+                    type: 'bar',
+                    label: {
+                      show: true,
+                      position: 'inside'
+                    },
+                    data: [200, 170, 240, 244, 200, 220, 210]
+                  },
+                  {
+                    name: '收入',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                      show: true
+                    },
+                    data: [320, 302, 341, 374, 390, 450, 420]
+                  },
+                  {
+                    name: '支出',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                      show: true,
+                      position: 'left'
+                    },
+                    data: [-120, -132, -101, -134, -190, -230, -210]
+                  }
+                ]
+              };
+              myChart.setOption(option);
+            }else{
+              console.log("v-charts 为空")
+            }
+          },
+          drawZzt4(){
+            let chart4 = this.$refs.chart4;
+            if(chart4){
+              let myChart = this.$echarts.init(chart4)
               let option = {
                 tooltip: {
                   trigger: 'axis',
@@ -153,111 +393,317 @@
               console.log("v-charts 为空")
             }
           },
-          drawZzt3(){
-            let chart3 = this.$refs.chart3;
-            if(chart3){
-              let myChart = this.$echarts.init(chart3)
+          drawZzt5(){
+            let chart5 = this.$refs.chart5;
+            if(chart5){
+              let myChart = this.$echarts.init(chart5)
+              let colors = {
+                type: 'linear',
+                x: 0, x2: 1, y: 0, y2: 0,
+                colorStops: [{
+                  offset: 0,
+                  color: 'rgba(18,248,254,0.8)'
+                }, {
+                  offset: 0.5,
+                  color: 'rgba(18,248,254,0.8)'
+                }, {
+                  offset: 0.5,
+                  color:'rgba(62,153,255,0.8)'
+                }, {
+                  offset: 1,
+                  color:'rgba(62,153,255,0.8)'
+                }]
+              }
+              let barWidth = 16;
               let option = {
-                tooltip: {
-                  trigger: 'axis',
-                  axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                grid:{
+                  top:40,
+                  right:20,
+                  bottom:55,
+                  left:50
+                },
+                tooltip:{
+                  show:false,
+                  trigger:"item",
+                  textStyle:{
+                    color:" #00cce2",
                   }
                 },
-                legend: {
-                  data: ['利润', '支出', '收入']
-                },
-                grid: {
-                  left: '3%',
-                  right: '4%',
-                  bottom: '3%',
-                  containLabel: true
-                },
-                xAxis: [
-                  {
-                    type: 'value'
+                xAxis: {
+                  data:['微气象','图像','杆塔倾斜','接地电阻','无线测温','智能金具'],
+                  //控制x轴线颜色
+                  axisLine:{
+                    show:true,
+                    lineStyle:{
+                      color:"rgba(0,255,255,.4)"
+                    }
+                  },
+                  //控制x轴刻度线
+                  axisTick:{
+                    show:false
+                  },
+                  //控制x轴字体样式
+                  axisLabel:{
+                    show:true,
+                    interval:0,
+                    rotate:60,
+                    color:" #00cce2",
+                    fontSize:10
+                  },
+                  //控制网格线是否显示
+                  splitLine:{
+                    show:false
                   }
-                ],
-                yAxis: [
-                  {
-                    type: 'category',
-                    axisTick: {
-                      show: false
-                    },
-                    data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+                },
+                yAxis: {
+                  //控制y轴线颜色
+                  axisLine:{
+                    show:false
+                  },
+                  //控制y轴刻度线
+                  axisTick:{
+                    show:false
+                  },
+                  //控制y轴字体样式
+                  axisLabel:{
+                    show:true,
+                    color:" #00cce2",
+                    fontSize:10
+                  },
+                  //控制网格线是否显示
+                  splitLine:{
+                    show:true,
+                    lineStyle:{
+                      color:"rgba(59,123,123,.3)"
+                    }
                   }
-                ],
+                },
                 series: [
+                  // 中间部分
                   {
-                    name: '利润',
+                    z:1,
                     type: 'bar',
-                    label: {
-                      show: true,
-                      position: 'inside'
+                    barWidth:barWidth,
+                    data:[131,3965,3,28,2,93],
+                    itemStyle:{
+                      normal:{
+                        color:colors
+                      }
                     },
-                    data: [200, 170, 240, 244, 200, 220, 210]
+                    label:{
+                      show:true,
+                      position:"top",
+                      color:" #00cce2"
+                    },
+                    barMinHeight:0
                   },
+                  //底部
                   {
-                    name: '收入',
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                      show: true
+                    z:2,
+                    type:'pictorialBar',
+                    data :[0.1,0.1,0.1,0.1,0.1,0.1],
+                    symbol :'diamond',
+                    symbolOffset:[0,'50%'],
+                    symbolSize:[barWidth,10],
+                    itemStyle:{
+                      normal:{
+                        color:colors
+                      }
                     },
-                    data: [320, 302, 341, 374, 390, 450, 420]
+                    label:{
+                      show:false
+                    }
                   },
+                  //顶部
                   {
-                    name: '支出',
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                      show: true,
-                      position: 'left'
+                    z:3,
+                    type:'pictorialBar',
+                    symbolPosition:'end',
+                    data:[131,3965,3,28,2,93],
+                    symbol :'diamond',
+                    symbolOffset:[0,'-56%'],
+                    symbolSize:[barWidth - 3,10 * (barWidth - 3) / barWidth],
+                    itemStyle:{
+                      normal:{
+                        borderColor: 'rgba(18,248,254,.8)',
+                        borderWidth: 2,
+                        color:'rgba(62,153,255,.8)'
+                      }
                     },
-                    data: [-120, -132, -101, -134, -190, -230, -210]
-                  }
-                ]
+                    label:{
+                      show:false
+                    }
+                  }]
               };
-              myChart.setOption(option);
+              myChart.setOption(option)
             }else{
-              console.log("v-charts 为空")
+              console.log('chart为空')
             }
           },
-          drawZzt4(){
-            let chart4 = this.$refs.chart4;
-            if(chart4){
-              let myChart = this.$echarts.init(chart4)
-              let option = {
-                legend: {},
-                tooltip: {},
-                dataset: {
-                  source: [
-                    ['product', '2015', '2016', '2017'],
-                    ['Matcha Latte', 43.3, 85.8, 93.7],
-                    ['Milk Tea', 83.1, 73.4, 55.1],
-                    ['Cheese Cocoa', 86.4, 65.2, 82.5],
-                    ['Walnut Brownie', 72.4, 53.9, 39.1]
-                  ]
+          drawZzt6(){
+            let chart6 = this.$refs.chart6;
+            if(chart6){
+              let myChart = this.$echarts.init(chart6)
+              let chartOptions={
+                grid:{
+                  left:40,
+                  top:40,
+                  bottom:50,
+                  right:10
                 },
-                xAxis: {type: 'category'},
-                yAxis: {},
+                xAxis: {
+                  data: ['1000kV', '±800kV', '500kV', '220kV', '110kV', '35kV'],
+                  offset:6,
+                  axisTick: {
+                    show: false
+                  },
+                  axisLine: {
+                    show: true,
+                    lineStyle:{
+                      color:"rgba(0,255,255,0.4)"
+                    }
+                  },
+                  axisLabel: {
+                    show: true,
+                    interval:0,
+                    textStyle: {
+                      color: '#00cce2',
+                      fontSize:10
+                    }
+                  },
+
+                },
+                yAxis: {
+                  splitLine: {
+                    show: true,
+                    lineStyle:{
+                      color:"rgba(59,123,123,0.3)"
+                    }
+                  },
+                  axisTick: {
+                    show: false
+                  },
+                  axisLine: {
+                    show: false
+                  },
+                  axisLabel: {
+                    show: true,
+                    textStyle:{
+                      color:" #00cce2"
+                    }
+
+                  }
+                },
                 series: [
-                  {type: 'bar'},
-                  {type: 'bar'},
-                  {type: 'bar'}
-                ]
+                  {
+                    type: 'pictorialBar',
+                    symbolSize: [14, 5],
+                    symbolOffset: [0, -3],
+                    z: 10,
+                    itemStyle: {
+                      normal: {
+                        color:"rgba(0,251,203,0.9)"
+                      }
+                    },
+                    data: [{
+                      value:4,
+                      symbolPosition: 'end'
+                    }, {
+                      value:2,
+                      symbolPosition: 'end'
+                    }, {
+                      value:130,
+                      symbolPosition: 'end'
+                    }, {
+                      value:537,
+                      symbolPosition: 'end'
+                    }, {
+                      value:917,
+                      symbolPosition: 'end'
+                    }, {
+                      value:1111,
+                      symbolPosition: 'end'
+                    }
+                    ]
+                  },
+                  {
+                    type: 'pictorialBar',
+                    symbolSize: [14, 5],
+                    symbolOffset: [0, 3],
+                    z: 12,
+                    itemStyle: {
+                      normal: {
+                        color: 'rgba(0,251,203,0.9)'
+                      }
+                    },
+                    data:[4,2,130,537,917,1111],
+                    barMinHeight:[2]
+                  },
+                  {
+                    type: 'pictorialBar',
+                    symbolSize: [18, 4],
+                    symbolOffset: [0,5],
+                    z: 11,
+                    itemStyle: {
+                      normal: {
+                        color: 'transparent',
+                        borderColor: 'rgba(0,251,203,0.9)',
+                        borderWidth: 2
+                      }
+                    },
+                    data:[4,2,130,537,917,1111],
+                    barMinHeight:[2]
+                  },
+                  {
+
+                    type: 'pictorialBar',
+                    symbolSize: [30,4],
+                    symbolOffset: [0, 6],
+                    z: 10,
+                    itemStyle: {
+                      normal: {
+                        color: 'transparent',
+                        borderColor: 'rgba(0,251,203,0.6)',
+                        borderType: 'dashed',
+                        borderWidth: 2
+                      }
+                    },
+                    data:[4,2,130,537,917,1111],
+                    barMinHeight:[2]
+                  },
+                  {
+                    type: 'bar',
+                    itemStyle: {
+                      normal: {
+                        color: 'rgba(0,251,203,0.6)',
+                      }
+                    },
+                    silent: true,
+                    barWidth: 14,
+                    data:[4,2,130,537,917,1111],
+                    barMinHeight:[2],
+                    label: {
+                      normal: {
+                        show: true,
+                        color:"#adfff6",
+                        position: 'top'
+                      }
+                    }
+                  }]
               };
-              myChart.setOption(option);
+             myChart.setOption(chartOptions);
             }else{
-              console.log("v-charts 为空")
+              console.log('chart为空')
             }
-          },
+          }
         },
       mounted(){
         this.drawZzt1();
         this.drawZzt2();
         this.drawZzt3();
-        this.drawZzt4()
+        this.drawZzt4();
+        this.drawZzt5();
+        this.drawZzt6();
       }
     }
 </script>

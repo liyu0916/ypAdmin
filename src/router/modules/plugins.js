@@ -31,6 +31,9 @@ export default {
     { path: 'v-charts/vchartLdt', name: 'demo-plugins-v-charts-vchartLdt', component: _import('demo/plugins/v-charts/vchartLdt'), meta: { ...meta, title: 'v-charts漏斗图' } },
     { path: 'echarts/echartsZxt', name: 'demo-plugins-echarts-echartsZxt', component: _import('demo/plugins/echarts/echartsZxt'), meta: { ...meta, title: 'echarts折线图' } },
     { path: 'echarts/echartsZzt', name: 'demo-plugins-echarts-echartsZzt', component: _import('demo/plugins/echarts/echartsZzt'), meta: { ...meta, title: 'echarts柱状图' } },
-    { path: 'echarts/echartsBt', name: 'demo-plugins-echarts-echartsBt', component: _import('demo/plugins/echarts/echartsBt'), meta: { ...meta, title: 'echarts饼图' } }
+    { path: 'echarts/echartsBt', name: 'demo-plugins-echarts-echartsBt', component: _import('demo/plugins/echarts/echartsBt'), meta: { ...meta, title: 'echarts饼图' } },
+    { path: 'highCharts/highChartsBt', name: 'demo-plugins-highCharts-highChartsBt', component: _import('demo/plugins/highCharts/highChartsBt'), meta: { ...meta, title: 'highCharts饼图' } },
+    { path: 'videoPlayer/movie', name: 'demo-plugins-videoPlayer-movie', component: _import('demo/plugins/videoPlayer/movie'), meta: { ...meta, title: 'movie视频播放' } },
+    { path: 'swiper/swipers', name: 'demo-plugins-swiper-swipers', component: _import('demo/plugins/swiper/swipers'), meta: { ...meta, title: 'swiper轮播' } }
     ]
 }

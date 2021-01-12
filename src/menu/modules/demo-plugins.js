@@ -37,6 +37,7 @@ export default {
         { path: '/demo/plugins/vxe-table/tree', title: 'tree' }
       ]
     },
+    //v-charts
     {
       path: '/demo/plugins/v-charts',
       title: 'v-charts',
@@ -48,6 +49,7 @@ export default {
         { path: '/demo/plugins/v-charts/vchartLdt', title: 'v-charts漏斗图' },
       ]
     },
+    //echarts
     {
       path: '/demo/plugins/echarts',
       title: 'echarts',
@@ -57,7 +59,33 @@ export default {
         { path: '/demo/plugins/echarts/echartsBt', title: 'echarts饼图' },
         { path: '/demo/plugins/echarts/echartsZzt', title: 'echarts柱状图' },
       ]
-    }
-
+    },
+    //highcharts
+    {
+      path: '/demo/plugins/highCharts',
+      title: 'highCharts',
+      icon: 'line-chart',
+      children: [
+        { path: '/demo/plugins/highCharts/highChartsBt', title: 'highCharts饼图' },
+      ]
+    },
+    //视频播放
+    {
+      path: '/demo/plugins/videoPlayer',
+      title: 'videoPlayer',
+      icon: 'video-camera',
+      children: [
+        { path: '/demo/plugins/videoPlayer/movie', title: 'video视频播放' },
+      ]
+    },
+    //轮播
+    {
+      path: '/demo/plugins/swiper',
+      title: 'swiper',
+      icon: 'crosshairs',
+      children: [
+        { path: '/demo/plugins/swiper/swipers', title: 'swiper轮播' },
+      ]
+    },
   ]
 }
