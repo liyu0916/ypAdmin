@@ -77,6 +77,7 @@
       :keyboard-config="{isArrow: true}"
 
       @menu-click="contextMenuClickEvent"
+      @cell-click="cellClickEvent"
       >
       <vxe-table-column type="seq" width="50"></vxe-table-column>
       <vxe-table-column field="name" title="姓名" width="20%" sortable
@@ -119,8 +120,6 @@
     name: 'demo-plugins-vxe-table-rowedit',
     data () {
       const regValid = ({ cellValue }) => {
-        console.log(cellValue)
-        console.log(this.$XEUtils.toStringDate(cellValue,'yyyy-MM-dd'))
         if (!cellValue || (cellValue && this.$XEUtils.toStringDate(cellValue,'yyyy-MM-dd') =='Invalid Date')) {
           return new Error('注册时间输入格式不正确')
         }
@@ -131,7 +130,7 @@
         validRules: {
           name: [
             { required: true, message: '名称必须填写' },
-            { min: 3, max: 5, message: '长度在 3 到 5 个字符' }
+            { min: 3, max: 8, message: '长度在 3 到 8 个字符' }
           ],
           regDate: [
             { validator: regValid }
@@ -243,7 +242,12 @@
       }
     },
     mounted () {
-      this.findList ()
+      this.findList ().then(tableData=>{
+        console.log(789)
+        console.log(tableData)
+        console.log(this.$refs.xTable.data)
+        console.log(this.$refs.xTable.getTableData())
+      })
     },
     computed: {
       list () {
@@ -279,14 +283,16 @@
       },
       findList () {
         this.loading = true
-
-        setTimeout(() => {
-         api.DEMO_VXE_LIST(Object.assign({},this.condData)).then(resp => {
-           this.tableData = resp.data.list
-          //  this.tablePage.totalResult = resp.data.count
-           this.loading = false
-         });
-        }, 1500)
+        return new Promise(resolve => {
+          setTimeout(() => {
+          api.DEMO_VXE_LIST(Object.assign({},this.condData)).then(resp => {
+            this.tableData = resp.data.list
+            //  this.tablePage.totalResult = resp.data.count
+            this.loading = false
+            resolve(this.tableData)
+          });
+          }, 1500)
+        })
       },
       contextMenuClickEvent ({ menu, row, column }) {
         let xTable = this.$refs.xTable
@@ -314,12 +320,21 @@
             this.$XModal.message(`点击了 ${menu.name} 选项`)
         }
       },
+      cellClickEvent(row){
+        //row
+        // console.log(row)
+        // if(this.$refs.xTable.getRowid(this.$refs.xTable.getCurrentRecord()) == row.rowid){
+        //   this.$refs.xTable.clearCurrentRow()
+        // }
+
+      },
       async insertEvent (row) {
         let record = {
           sex: '1'
         }
         let { row: newRow } = await this.$refs.xTable.insertAt(record, row)
         await this.$refs.xTable.setActiveRow(newRow)
+        console.log(this.$refs.xTable.data)
       },
       insertLikeEvent () {
         let currentRow = this.$refs.xTable.getCurrentRecord();
@@ -341,6 +356,7 @@
             //...
 
             this.$refs.xTable.remove(currentRow)
+            console.log(this.$refs.xTable.data)
           }
         })
       },
@@ -349,10 +365,10 @@
         if (errMap) {return}
         const { insertRecords, removeRecords, updateRecords } = this.$refs.xTable.getRecordset()
         this.$XModal.alert(`insertRecords=${insertRecords.length} removeRecords=${removeRecords.length} updateRecords=${updateRecords.length}`)
-        // console.log(this.$refs.xTable.getRecordset())
-        // console.log(insertRecords)
-        // console.log(removeRecords)
-        // console.log(updateRecords)
+
+this.$refs.xTable.clearAll()
+        // this.findList()
+
       },
       formatterSex ({ cellValue }) {
         const item = this.sexList.find(item => item.value === cellValue)

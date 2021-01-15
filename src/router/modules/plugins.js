@@ -24,7 +24,7 @@ export default {
     { path: 'vxe-table/grid', name: 'demo-plugins-vxe-table-grid', component: _import('demo/plugins/vxe-table/grid'), meta: { ...meta, title: 'grid', cache: true } },
     { path: 'vxe-table/chart', name: 'demo-plugins-vxe-table-chart', component: _import('demo/plugins/vxe-table/chart'), meta: { ...meta, title: 'chart' } },
     { path: 'vxe-table/rowedit', name: 'demo-plugins-vxe-table-rowedit', component: _import('demo/plugins/vxe-table/rowedit'), meta: { ...meta, title: 'rowedit' } },
-    { path: 'vxe-table/tree', name: 'demo-plugins-vxe-table-tree', component: _import('demo/plugins/vxe-table/tree'), meta: { ...meta, title: 'tree' } },
+    { path: 'vxe-table/tree', name: 'demo-plugins-vxe-table-tree', component: _import('demo/plugins/vxe-table/tree'), meta: { ...meta, title: 'tree', cache: true } },
     { path: 'v-charts/vchartZxt', name: 'demo-plugins-v-charts-vchartZxt', component: _import('demo/plugins/v-charts/vchartZxt'), meta: { ...meta, title: 'v-charts折线图' } },
     { path: 'v-charts/vchartBt', name: 'demo-plugins-v-charts-vchartBt', component: _import('demo/plugins/v-charts/vchartBt'), meta: { ...meta, title: 'v-charts饼图' } },
     { path: 'v-charts/vchartZzt', name: 'demo-plugins-v-charts-vchartZzt', component: _import('demo/plugins/v-charts/vchartZzt'), meta: { ...meta, title: 'v-charts柱状图' } },
