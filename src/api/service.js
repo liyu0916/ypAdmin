@@ -1,4 +1,4 @@
-import { Message } from 'element-ui'
+import { Notification, MessageBox, Message } from 'element-ui'
 import axios from 'axios'
 import Adapter from 'axios-mock-adapter'
 import { get, isEmpty } from 'lodash'
@@ -56,7 +56,7 @@ function createService () {
       // {
       //   code: 0,
       //   msg: 'success',
-      //   count: 0
+      //   total: 0
       //   data: []
       // }
       // 此时
@@ -66,7 +66,7 @@ function createService () {
       // 'success'
       // response.data.data : (在调用接口)
       // []
-      // 默认约定 code 为 0 时代表成功
+      // 默认约定 code 为 0 时代表成功，非 0 时为失败
       // 你也可以不使用这种方法，改为在下面的 http 错误拦截器里做处理
 
       // 没有 code 视为非项目接口不作处理
@@ -79,7 +79,17 @@ function createService () {
         // 返回响应内容
         case 0: return response.data
         // 例如在 code 401 情况下退回到登录页面
-        case 401: throw new Error('请重新登录')
+        case 401: {
+          MessageBox.alert('系统认证失败，请重新登录', '系统提示', {
+            confirmButtonText: '确定',
+            callback: action => {
+              store.dispatch('d2admin/account/logout').then(() => {
+                location.href = '/index';
+              })
+            }
+          });
+          break;
+        }
         // 根据需要添加其它判断
         default:{
           const error = new Error(`${response.data.msg}: ${response.config.url}`)
@@ -122,12 +132,13 @@ function stringify (data) {
 function createRequest (service) {
   return function (config) {
     const token = util.cookies.get('token')
+
     const configDefault = {
       headers: {
-        Authorization: token,
+        'Authorization': 'Bearer ' + token,
         'Content-Type': get(config, 'headers.Content-Type', 'application/json')
       },
-      timeout: 5000,
+      timeout: 30000,
       baseURL: process.env.VUE_APP_API,
       data: {}
     }

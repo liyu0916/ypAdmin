@@ -1,6 +1,7 @@
 import playground from './modules/playground'
 import plugins from './modules/plugins'
 import components from './modules/components'
+import bss from './modules/bss'
 
 import layoutHeaderAside from '@/layout/header-aside'
 
@@ -54,7 +55,8 @@ const frameIn = [
   },
   playground,
   plugins,
-  components
+  components,
+  bss
 ]
 
 /**

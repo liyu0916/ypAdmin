@@ -6,6 +6,8 @@ import demoPlugins from './modules/demo-plugins'
 import demoComponents from './modules/demo-components'
 // 功能
 import demoPlayground from './modules/demo-playground'
+// 业务支撑
+import system from './modules/bss'
 
 /**
  * @description 给菜单数据补充上 path 字段
@@ -30,7 +32,6 @@ const demoMenu = [
 
 const bizMenu = []
 
-const adminMenu = []
 
 let sysMenu = []
 
@@ -39,6 +40,8 @@ if(process.env.NODE_ENV === 'development'){
   sysMenu = [...demoMenu]
 }
 
+sysMenu.push(system)
+
 sysMenu.unshift ({
   path: '/index',
   title: '首页',
@@ -46,7 +49,7 @@ sysMenu.unshift ({
 })
 
 // 菜单 侧边栏
-export const menuAside = supplementPath(demoMenu)
+export const menuAside = supplementPath(sysMenu)
 
 // 菜单 顶栏
 export const menuHeader = supplementPath(sysMenu)

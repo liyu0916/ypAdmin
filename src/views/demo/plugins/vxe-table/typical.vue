@@ -98,7 +98,7 @@
         sortable
         :filters="[{label: '大于16岁', value: 16}, {label: '大于26岁', value: 26}, {label: '大于30岁', value: 30}]"
         :filter-method="filterAgeMethod"></vxe-table-column>
-      <vxe-table-column field="regDate" title="注册时间" type="html" sortable :formatter="formatDate"></vxe-table-column>
+      <vxe-table-column field="regDate" title="注册时间" sortable :formatter="formatDate"></vxe-table-column>
       <vxe-table-column field="address" title="Address" type="html" sortable></vxe-table-column>
       <vxe-table-column field="createTime" title="createTime"  sortable :visible="false"></vxe-table-column>
       <vxe-table-column title="操作" width="100" show-overflow>

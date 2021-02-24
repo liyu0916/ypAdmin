@@ -35,6 +35,14 @@
   float: right;
 }
 
+//表格右键菜单
+.#{$prefix}-rclick-menus {
+  background-color: #F8F8F9;
+}
+.#{$prefix}-rclick-menus .vxe-ctxmenu--link {
+  width: 200px;
+}
+
 // 边距相关
 $sizes: (0, 5, 10, 15, 20);
 

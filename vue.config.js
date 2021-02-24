@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 const VueFilenameInjector = require('@d2-projects/vue-filename-injector')
 const ThemeColorReplacer = require('webpack-theme-color-replacer')
@@ -52,19 +53,26 @@ module.exports = {
   pages,
   configureWebpack: config => {
     const configNew = {}
-    if (process.env.NODE_ENV === 'production') {
-      configNew.externals = externals
-      configNew.plugins = [
-        // gzip
-        new CompressionWebpackPlugin({
-          filename: '[path].gz[query]',
-          test: new RegExp('\\.(' + ['js', 'css'].join('|') + ')$'),
-          threshold: 10240,
-          minRatio: 0.8,
-          deleteOriginalAssets: false
-        })
-      ]
-    }
+    configNew.plugins = [
+      new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery",
+        "windows.jQuery": "jquery"
+      })
+    ]
+    // if (process.env.NODE_ENV === 'production') {
+    //   configNew.externals = externals
+      // configNew.plugins = [
+      //   // gzip
+      //   new CompressionWebpackPlugin({
+      //     filename: '[path].gz[query]',
+      //     test: new RegExp('\\.(' + ['js', 'css'].join('|') + ')$'),
+      //     threshold: 10240,
+      //     minRatio: 0.8,
+      //     deleteOriginalAssets: false
+      //   })
+      // ]
+    // }
     return configNew
   },
   // 默认设置: https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-service/lib/config/base.js

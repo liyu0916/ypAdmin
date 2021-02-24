@@ -12,7 +12,7 @@ import router from './router'
 import { menuHeader, menuAside } from '@/menu'
 import { frameInRoutes } from '@/router/routes'
 
-// import $ from 'jquery'
+import $ from 'jquery'
 import  echarts from 'echarts'
 import VCharts from 'v-charts'
 import XEUtils from 'xe-utils'
@@ -27,9 +27,10 @@ XEUtils.setup({
     q: [null, '第一季度', '第二季度', '第三季度', '第四季度']
   }
 })
+
 Vue.prototype.$XEUtils = XEUtils
 Vue.prototype.$echarts = echarts
-
+Vue.prototype.$ = $
 
 // 核心插件
 
